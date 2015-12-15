@@ -1,7 +1,10 @@
 module Lita
+  # What about us loggers?
   module Handlers
+    # Hard-workin' men who like to stand up after they've taken a poo and then
+    # turn around and cut their poo in half with their urine?
     class Log < Handler
-      LEVELS = ['unknown', 'fatal', 'error', 'warn', 'info', 'debug']
+      LEVELS = %w(unknown fatal error warn info debug)
 
       route(
         /^log\s+(?<level>\w+)\s+(?<message>.*)/i,

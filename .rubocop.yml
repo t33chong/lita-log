@@ -1,0 +1,15 @@
+FileName:
+  Exclude:
+    - lib/lita-log.rb
+
+LineLength:
+  Max: 130
+
+AbcSize:
+  Max: 30
+
+MethodLength:
+  Max: 20
+
+ClassLength:
+  Max: 150

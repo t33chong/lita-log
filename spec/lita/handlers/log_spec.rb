@@ -19,24 +19,24 @@ describe Lita::Handlers::Log, lita_handler: true do
     context 'when the user is authorized' do
       it 'logs a message with a valid level' do
         expect(logger).to receive(:info).with('foo bar baz')
+        send_command('log Info foo bar baz', as: alice)
         expect(replies.count).to eq(1)
         expect(replies.last).to eq("Successfully logged 'foo bar baz' with level INFO")
-        send_command('log info foo bar baz', as: alice)
       end
 
       it 'complains with an invalid level' do
         expect(logger).not_to receive(:foo)
-        expect(replies.count).to eq(1)
-        expect(replies.last).to eq("foo is not a valid log level. Try: UNKNOWN, FATAL, ERROR, WARN, INFO, DEBUG")
         send_command('log foo bar baz', as: alice)
+        expect(replies.count).to eq(1)
+        expect(replies.last).to eq('foo is not a valid log level. Try: UNKNOWN, FATAL, ERROR, WARN, INFO, DEBUG')
       end
     end
 
     context 'when the user is not authorized' do
       it 'does nothing' do
         expect(logger).not_to receive(:info)
-        expect(replies.count).to eq(0)
         send_command('log info foo bar baz', as: bob)
+        expect(replies.count).to eq(0)
       end
     end
   end
