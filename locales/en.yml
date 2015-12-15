@@ -2,3 +2,9 @@ en:
   lita:
     handlers:
       log:
+        help:
+          log_key: "log LEVEL MESSAGE"
+          log_value: "Log a message to Lita's Logger object. Valid levels: UNKNOWN, FATAL, ERROR, WARN, INFO, DEBUG"
+        log:
+          invalid: "%{level} is not a valid log level. Try: UNKNOWN, FATAL, ERROR, WARN, INFO, DEBUG"
+          success: "Successfully logged '%{message}' with level %{level}"
